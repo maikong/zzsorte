@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-6">
+        <h1>Adicionar Nova Pessoa</h1>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div>{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="mb-3">
+                <label for="id_quantity" class="form-label">Quantidade números</label>
+                <input type="number" name="quantity" id="id_quantity" class="form-control" min="1" value="1">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+            <a href="{% url 'luckinumber_all' %}" class="btn btn-primary">Listar números</a>
+
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

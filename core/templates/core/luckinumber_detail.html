@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1>Detail - {{email.email}}</h1>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Números da Sorte</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for numbers in numbers %}
+            <tr>
+                <td>{{ numbers.email }}</td>
+                <td>{{ numbers.number }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">Nenhuma número encontrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'luckinumber_resume'  %}" class="btn btn-primary">Voltar</a>
+</div>
+
+{% endblock %}

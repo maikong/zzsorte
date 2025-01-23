@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-2">
+            <h1>Sorteio</h1>
+        </div>
+      
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_quantity" class="form-label">Quantidade números</label>
+                <input type="number" name="quantity" id="id_quantity" class="form-control" min="1" value="{{quantity}}">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Sortear</button>
+            </div>
+        </form>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Usuário</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for raffle in raffles %}
+                <tr>
+                    <td>{{ raffle.number }}</td>
+                    <td>{{ raffle.email }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2">Nenhuma pessoa encontrada.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
