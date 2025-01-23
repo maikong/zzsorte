@@ -3,14 +3,13 @@ from django.shortcuts import redirect
 from django.urls import path
 import random
 
-from .models import LuckyNumber
+from .models import LuckyNumber, Campaign, Raffle
 
-admin.site.site_title = "TicketsPlus site admin (DEV)"
-admin.site.site_header = "TicketsPlus administration"
-admin.site.index_title = "Site administration"
+admin.site.site_title = "ZZSorte"
+admin.site.site_header = "ZZSorte Administration"
+admin.site.index_title = "ZZSorte Administration"
 
 class LuckyNumberAdmin(admin.ModelAdmin):
-    #list_display = ('nome', 'numero_da_sorte', 'origem')
     actions = ['sortear_numero']
 
     def sortear_numero(self, request, queryset):
@@ -18,10 +17,7 @@ class LuckyNumberAdmin(admin.ModelAdmin):
             self.message_user(request, "Nenhuma pessoa selecionada.")
             return
         
-        # Seleciona aleatoriamente uma pessoa do queryset
         pessoa_sorteada = random.choice(queryset)
-        
-        # Mensagem de sucesso
         self.message_user(request, f'Número da sorte sorteado: {pessoa_sorteada.nome} - {pessoa_sorteada.numero_da_sorte} - Origem: {pessoa_sorteada.get_origem_display()}')
 
     sortear_numero.short_description = "Sortear um número da sorte"
@@ -40,3 +36,6 @@ class LuckyNumberAdmin(admin.ModelAdmin):
         return redirect('admin:app_pessoa_changelist')  # Substitua 'app' pelo nome do seu aplicativo
 
 admin.site.register(LuckyNumber, LuckyNumberAdmin)
+admin.site.register(Campaign)
+admin.site.register(Raffle)
+

@@ -15,8 +15,8 @@
         <tbody>
             {% for pessoa in resume %}
             <tr>
-                <td> <a href="{% url 'luckynumber_detail' pessoa.email  %}">{{ pessoa.email }}</a></td>
-                <td>{{ pessoa.number_count }}</td>
+                <td>{{ user.email }}</a></td>
+                <td>{{ user.number_count }}</td>
             </tr>
             {% empty %}
             <tr>

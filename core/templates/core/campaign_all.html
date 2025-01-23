@@ -3,20 +3,20 @@
 {% block content %}
 
 <div class="container mt-5">
-    <h1>Placar</h1>
-    
+    <h1>Campanhas</h1>
+  
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Nome</th>
-                <th>Quantidade</th>
+                <th>Campanha</th>
+                <th>Código</th>
             </tr>
         </thead>
         <tbody>
-            {% for pessoa in resume %}
+            {% for campaign in campaigns %}
             <tr>
-                <td> <a href="{% url 'luckynumber_detail' pessoa.email  %}">{{ pessoa.email }}</a></td>
-                <td>{{ pessoa.number_count }}</td>
+                <td>{{ campaign.name }}</td>
+                <td>{{ campaign.id }}</td>
             </tr>
             {% empty %}
             <tr>
@@ -26,7 +26,9 @@
         </tbody>
     </table>
 
-    
+<pre>
+    {{campaigns}}
+</pre>
 
 </div>
 
