@@ -4,6 +4,7 @@ from .views import New_Luckinumber, Show_Luckinumber, LuckiNumberRaffle, AdminDe
 urlpatterns = [
     path('new/', New_Luckinumber, name='luckinumber_new'),
     path('', Show_Luckinumber, name='luckinumber_all'),
+    #path('', Show_Luckinumber_Resume, name='luckinumber_all'),
     path('detail/<str:email>/', Show_Luckinumber_Detail, name='luckynumber_detail'),
     path('resume/', Show_Luckinumber_Resume, name='luckinumber_resume'),
     path('raffle/', LuckiNumberRaffle, name='luckinumber_raffle'),

@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import UserLoginForm
 from django.contrib.auth.decorators import login_required
 
+@login_required
 def New_Luckinumber(request):
     if request.method == 'POST':
         form = LuckyNumberaForm(request.POST)
@@ -30,6 +31,7 @@ def New_Luckinumber(request):
     
     return render(request, 'core/luckinumber_new.html', {'form': form})
 
+@login_required
 def Show_Luckinumber(request):
     if not request.user.is_authenticated:
         return redirect('login')
